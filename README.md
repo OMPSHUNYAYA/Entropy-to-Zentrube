@@ -1,7 +1,12 @@
 # Entropy-to-Zentrube: Redefining Entropy — White Papers (v1.8)
 
+![GitHub Release](https://img.shields.io/github/v/release/OMPSHUNYAYA/Entropy-to-Zentrube?style=flat&logo=github) 
+![GitHub Stars](https://img.shields.io/github/stars/OMPSHUNYAYA/Entropy-to-Zentrube?style=flat&logo=github)
+![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-blue?style=flat&logo=creative-commons)
+
 This repository hosts the public release of **Zentrube**, a compact, time-aware entropy lens for symbolic drift.  
 It reframes entropy as readiness: rising with rupture, falling with recovery, and remaining bounded and interpretable.
+
 
 ## White Papers
 - [Brief Version (v1.8) — Preview on GitHub](Brief_Zentrube_White%20Paper_v1.8.pdf)  
