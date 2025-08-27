@@ -34,26 +34,63 @@ Zentrubeₜ = log(Var(x₀:ₜ) + 1) × exp(−λt)
 
 ## Quick Start (Python)
 
-Try Zentrube in just a few lines of Python:
+A robust quick-start script with variance, Shannon entropy, and Zentrube:
 
+    from collections import Counter
+    import math
     import numpy as np
 
-    def zentrube(x, lam=0.01):
-        t = len(x)
-        return np.log(np.var(x) + 1.0) * np.exp(-lam * t)
+    def zentrube(x, lam=0.02, S="var"):
+        """
+        Zentrubeₜ = log(S(x₀:ₜ) + 1) × exp(−λt)
+        - lam: decay rate (1/lam ≈ memory horizon)
+        - S: "var" (variance) or "std" (standard deviation)
+        """
+        arr = np.asarray(x, dtype=float).reshape(-1)
+        t = arr.size
+        if t == 0:
+            return 0.0
+        spread = np.var(arr) if S == "var" else np.std(arr)
+        return math.log(spread + 1.0) * math.exp(-lam * t)
+
+    def shannon_entropy(x, base="e"):
+        """
+        Shannon entropy H(X) = −Σ p(x) log(p(x))
+        base: "e" (nats), "2" (bits), or "10" (bans).
+        Treats values as discrete symbols for this quick demo.
+        """
+        arr = np.asarray(x)
+        n = arr.size
+        if n == 0:
+            return 0.0
+        counts = Counter(arr)
+        probs = [c/n for c in counts.values()]
+        if base == "e":
+            log = math.log
+        elif base == "2":
+            log = lambda v: math.log(v, 2)
+        else:
+            log = lambda v: math.log(v, 10)
+        return -sum(p * log(p) for p in probs if p > 0.0)
 
     # Example dataset
     x = [1, 2, 3, 4, 5, 6]
-    print("Zentrube value:", zentrube(x, lam=0.02))
 
-Output is a single readiness value that reflects both **spread** (via variance) and **recency** (via time decay).
+    print("Variance:", np.var(x))
+    print("Shannon Entropy (nats):", shannon_entropy(x))
+    print("Zentrube (lam=0.02):", zentrube(x, lam=0.02))
+
+Typical output:  
+- Variance ≈ **2.92** (unbounded, scale-dependent).  
+- Shannon Entropy ≈ **1.79** (distribution-centric, no time element).  
+- Zentrube ≈ **1.22** (bounded, interpretable, time-aware readiness).
+
+*Tip: λ controls the memory horizon. A typical range is 0.01–0.05; 1/λ ≈ number of steps remembered.*
 
 ## How to read the value (plain English)
 - If **Zentrube rises**, the system is **rupturing** (variance growing, instability forming).  
 - If **Zentrube falls**, the system is **recovering** (variance stabilizing, order returning).  
-- Because of the **exp(−λt)** term, older data counts less — the value is always **bounded and time-aware**.  
-
-*Tip: λ controls the memory horizon. A typical range is 0.01–0.05; 1/λ ≈ number of steps remembered.*
+- Because of the **exp(−λt)** term, older data counts less — the value is always **bounded and time-aware**.
 
 ## Quick Comparison (Variance vs Shannon vs Zentrube)
 
@@ -64,29 +101,13 @@ Formulas:
 - Shannon Entropy = −Σ p(x) log(p(x))  
 - Zentrubeₜ = log(Var(x₀:ₜ) + 1) × exp(−λt)
 
-Example code:
+Example (already included in the Quick Start above):
 
-    from collections import Counter
-    import math, numpy as np
-
-    def shannon_entropy(x):
-        counts = Counter(x)
-        total = len(x)
-        return -sum((c/total) * math.log(c/total) for c in counts.values())
-
-    def zentrube(x, lam=0.02):
-        t = len(x)
-        return np.log(np.var(x) + 1.0) * np.exp(-lam * t)
-
-    x = [1, 2, 3, 4, 5, 6]
-    print("Variance:", np.var(x))
-    print("Shannon Entropy:", shannon_entropy(x))
-    print("Zentrube:", zentrube(x))
-
-Typical outcome on this dataset:  
-- Variance ≈ **2.92** (unbounded, scale-dependent).  
-- Shannon Entropy ≈ **1.79** (distribution-centric, no time element).  
-- Zentrube ≈ **1.22** (bounded, interpretable, time-aware drift/readiness).
+    # Using the same x = [1, 2, 3, 4, 5, 6]
+    # Results:
+    # - Variance ≈ 2.92
+    # - Shannon Entropy ≈ 1.79
+    # - Zentrube ≈ 1.22
 
 ➡️ **Impact:** Zentrube gives a compact, early-warning style number that’s easy to compare across windows, signals, and domains.
 
