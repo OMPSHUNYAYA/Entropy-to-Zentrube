@@ -23,3 +23,7 @@ Where S ∈ {Var, σ}.
 © The Authors of **Shunyaya Framework** and **Zentrube Formula**.  
 Released under **CC BY-NC 4.0** (non-commercial, with attribution).  
 Use for research, review, and education. Commercial use and resale prohibited.
+
+## Latest Release
+👉 [Zentrube: Entropy Redefined — Practical White Papers v1.8](https://github.com/OMPSHUNYAYA/Zentrube/releases/tag/v1.8)
+
