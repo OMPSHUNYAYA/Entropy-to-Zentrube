@@ -45,6 +45,9 @@ A robust quick-start script with variance, Shannon entropy, and Zentrube:
         Zentrubeₜ = log(S(x₀:ₜ) + 1) × exp(−λt)
         - lam: decay rate (1/lam ≈ memory horizon)
         - S: "var" (variance) or "std" (standard deviation)
+        Notes:
+        - Uses population variance/std by default (ddof=0).
+          If you require sample statistics, adjust with ddof=1 as needed.
         """
         arr = np.asarray(x, dtype=float).reshape(-1)
         t = arr.size
@@ -57,7 +60,9 @@ A robust quick-start script with variance, Shannon entropy, and Zentrube:
         """
         Shannon entropy H(X) = −Σ p(x) log(p(x))
         base: "e" (nats), "2" (bits), or "10" (bans).
-        Treats values as discrete symbols for this quick demo.
+        Note:
+        - Treats input values as discrete symbols for this demo.
+          For continuous data, discretization/binning is typically used.
         """
         arr = np.asarray(x)
         n = arr.size
@@ -76,14 +81,14 @@ A robust quick-start script with variance, Shannon entropy, and Zentrube:
     # Example dataset
     x = [1, 2, 3, 4, 5, 6]
 
-    print("Variance:", np.var(x))
-    print("Shannon Entropy (nats):", shannon_entropy(x))
-    print("Zentrube (lam=0.02):", zentrube(x, lam=0.02))
+    print("Variance:", np.var(x))  # ≈ 2.9167 (population)
+    print("Shannon Entropy (nats):", shannon_entropy(x))  # ≈ 1.7918
+    print("Zentrube (lam=0.02):", zentrube(x, lam=0.02))  # ≈ 1.2109
 
-Typical output:  
+Typical output (rounded):  
 - Variance ≈ **2.92** (unbounded, scale-dependent).  
-- Shannon Entropy ≈ **1.79** (distribution-centric, no time element).  
-- Zentrube ≈ **1.22** (bounded, interpretable, time-aware readiness).
+- Shannon Entropy ≈ **1.79** (nats; distribution-centric, no time).  
+- Zentrube ≈ **1.21** (bounded, interpretable, time-aware readiness).
 
 *Tip: λ controls the memory horizon. A typical range is 0.01–0.05; 1/λ ≈ number of steps remembered.*
 
@@ -92,22 +97,13 @@ Typical output:
 - If **Zentrube falls**, the system is **recovering** (variance stabilizing, order returning).  
 - Because of the **exp(−λt)** term, older data counts less — the value is always **bounded and time-aware**.
 
-## Quick Comparison (Variance vs Shannon vs Zentrube)
+## Quick Comparison
 
-To see why Zentrube matters, compare with classical measures:
-
-Formulas:  
-- Variance = Var(x₀:ₜ)  
-- Shannon Entropy = −Σ p(x) log(p(x))  
-- Zentrubeₜ = log(Var(x₀:ₜ) + 1) × exp(−λt)
-
-Example (already included in the Quick Start above):
-
-    # Using the same x = [1, 2, 3, 4, 5, 6]
-    # Results:
-    # - Variance ≈ 2.92
-    # - Shannon Entropy ≈ 1.79
-    # - Zentrube ≈ 1.22
+| Measure          | Formula                               | Example (x = [1..6]) | Key Traits                          |
+|------------------|----------------------------------------|----------------------|-------------------------------------|
+| Variance         | Var(x₀:ₜ)                              | ≈ **2.92**           | Unbounded, scale-dependent          |
+| Shannon Entropy  | −Σ p(x) log(p(x))                      | ≈ **1.79** (nats)    | Distribution-centric, no time       |
+| Zentrube         | log(Var(x₀:ₜ) + 1) × exp(−λt)          | ≈ **1.21**           | Bounded, time-aware readiness       |
 
 ➡️ **Impact:** Zentrube gives a compact, early-warning style number that’s easy to compare across windows, signals, and domains.
 
