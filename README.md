@@ -4,8 +4,11 @@ This repository hosts the public release of **Zentrube**, a compact, time-aware 
 It reframes entropy as readiness: rising with rupture, falling with recovery, and remaining bounded and interpretable.
 
 ## White Papers
-- [Brief Version (v1.8)](Brief_Zentrube_White%20Paper_v1.8.pdf)  
-- [Detailed Version (v1.8)](Zentrube_White%20Paper_v1.8.pdf)  
+- [Brief Version (v1.8) — Preview on GitHub](Brief_Zentrube_White%20Paper_v1.8.pdf)  
+  [📄 Download Brief Version](https://github.com/OMPSHUNYAYA/Entropy-to-Zentrube/raw/main/Brief_Zentrube_White%20Paper_v1.8.pdf)  
+
+- [Detailed Version (v1.8) — Preview on GitHub](Zentrube_White%20Paper_v1.8.pdf)  
+  [📄 Download Detailed Version](https://github.com/OMPSHUNYAYA/Entropy-to-Zentrube/raw/main/Zentrube_White%20Paper_v1.8.pdf)  
 
 ## Canonical Formula
 Zentrubeₜ = `log(S(x₀:ₜ) + 1) × exp(−λt)`  
@@ -42,5 +45,3 @@ Use for research, review, and education. Commercial use and resale prohibited.
 
 ## Suggested GitHub Topics (add in repo settings → “About”)
 `entropy` · `information-theory` · `drift-detection` · `time-series` · `resilience` · `zentrube` · `shunyaya`
-
-
