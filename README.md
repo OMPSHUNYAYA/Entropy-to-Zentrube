@@ -33,6 +33,23 @@ Where S ∈ {Var, σ}.
 
 (All results are **observation-only, reproducible, falsifiable**, and included in the white papers.)
 
+## Quick Start (Python)
+
+Try Zentrube in just a few lines of Python:
+
+    import numpy as np
+
+    def zentrube(x, lam=0.01):
+        t = len(x)
+        return np.log(np.var(x) + 1.0) * np.exp(-lam * t)
+
+    # Example dataset
+    x = [1, 2, 3, 4, 5, 6]
+    print("Zentrube value:", zentrube(x, lam=0.02))
+
+Output will be a single entropy-like value that reflects variance and time decay.  
+For rolling/windowed variants and proofs, see the detailed white paper.
+
 ## License
 © The Authors of **Shunyaya Framework** and **Zentrube Formula**.  
 Released under **CC BY-NC 4.0** (non-commercial, with attribution).  
