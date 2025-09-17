@@ -148,9 +148,61 @@ Latest release: **v1.8** → https://github.com/OMPSHUNYAYA/Entropy-to-Zentrube/
 
 ## License
 
-© The Authors of **Shunyaya Framework** and **Zentrube Formula**  
+© The Authors of Shunyaya Framework and Zentrube.  
 Released under **CC BY-NC 4.0** (non-commercial, with attribution).  
-Use for research, review, and education. Commercial use and resale prohibited.
+Use for research, review, and education.
+
+## Third-Party Data & Licences (applies to all demonstrations)
+
+We use publicly available datasets where stated. Rights come from each dataset’s licence/terms. We attribute, link to the source/licence, avoid implying endorsement, and do not re-host raw files unless the licence permits.
+
+**ECG — MIT-BIH Arrhythmia Database (PhysioNet)**  
+- Source: MIT-BIH Arrhythmia Database (e.g., record 101) on PhysioNet  
+- Licence/Terms: Open Data Commons Attribution (ODC-By) 1.0; use the recommended citation on the dataset page  
+- Link (dataset): https://www.physionet.org/physiobank/database/mitdb/  
+- Link (licence text): https://www.physionet.org/content/mitdb/view-license/1.0.0/  
+- Last verified: 2025-09-17
+
+**Hurricanes — IBTrACS v04r01 (NOAA/NCEI)**  
+- Source: International Best Track Archive for Climate Stewardship (IBTrACS) v04r01  
+- Licence/Terms: As stated on the IBTrACS product page; use the “Citable as” guidance; no endorsement implied  
+- Link (product page): https://www.ncei.noaa.gov/products/international-best-track-archive  
+- Link (metadata landing): https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc%3AC01552  
+- Note: For Erin (2025), IBTrACS lists a PROVISIONAL operational track; reanalysis may update values  
+- Last verified: 2025-09-17
+
+**Cybersecurity — CICIDS-2017 (UNB / Canadian Institute for Cybersecurity)**  
+- Source: CICIDS-2017 Friday Working Hours Afternoon DDoS subset  
+- Licence/Terms: Publicly available for researchers; cite the CICIDS-2017 paper as requested on the dataset page  
+- Link: https://www.unb.ca/cic/datasets/ids-2017.html  
+- Last verified: 2025-09-17
+
+**Insurance (Annuities) — Author-Generated Demo Dataset**  
+- Source: Internal, author-generated synthetic annuity dataset prepared for the Zentrube demonstration (file in this repo, e.g., `trial.csv`)  
+- Licence/Terms: © Zentrube/Authors — released under **CC BY 4.0** for this demo dataset (your contributions); no third-party data included  
+- Notes: Constructed from generic survival anchors and assumptions described in the paper; not taken from SOA or SSA tables  
+- Last verified: 2025-09-17
+
+**Telecom — Wireshark “Network_Join_Nokia_Mobile.pcap”**  
+- Source: Wireshark Sample Captures — `Network_Join_Nokia_Mobile.pcap`  
+- Link (protocol page listing the file): https://wiki.wireshark.org/Wi-Fi  
+- Link (SampleCaptures index): https://wiki.wireshark.org/SampleCaptures  
+- Licence/Terms: As provided on the Wireshark wiki; attribute Wireshark contributors; no endorsement implied  
+- Last verified: 2025-09-17  
+- Note: We exported a join-only CSV from the PCAP for analysis.
+
+**Snow — Global Historical Climatology Network Daily (GHCN-D)**  
+- Source: NOAA/NCEI GHCN-Daily product (station daily summaries)  
+- Licence/Terms: Publicly accessible under NOAA open data policy; please cite NCEI dataset/product pages; no endorsement implied  
+- Link (product): https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily  
+- Link (documentation): https://www.ncei.noaa.gov/pub/data/cdo/documentation/GHCND_documentation.pdf  
+- Last verified: 2025-09-17
+
+**Caption for derived figures/tables**  
+> Source: <Dataset name>. Licence/Terms: <as stated on dataset page>. Used under those terms; changes made (processing/aggregation/visualization). No endorsement implied.
+
+**Redistribution**  
+We do not include or redistribute third-party raw data in this repository unless the dataset’s licence explicitly permits it; we link to the original source instead.
 
 ---
 
